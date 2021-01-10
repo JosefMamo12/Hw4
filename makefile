@@ -12,6 +12,8 @@ main.o: main.c
 trie.o: trie.c trie.h
 	$(CC) $(FLAGS) -c trie.c
 
+ .PHONY:
+	clean all frequency
 
 clean:
 	rm -rf *o run main
