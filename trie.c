@@ -148,7 +148,7 @@ void preorder(struct triNode *follow, char str[], int d)
 
         int b = follow->count;
         str[d] = 0;
-        printf("%s %d \n", str, b);
+        printf("%s %d\n", str, b);
     }
 
     for (i = 0; i < 26; i++)
