@@ -35,7 +35,18 @@ int main(int argc, char const *argv[])
                 theBiggestWord = counter;
             freeList(&lst);
             counter = 0;
+            free(str);
         }
+    }
+    if (counter > 0)
+    {
+        if (counter > theBiggestWord)
+            theBiggestWord = counter;
+        str = makeListToStr(&lst, counter, str);
+        freeList(&lst);
+        insert(root, str);
+        counter = 0;
+        free(str);
     }
     if (isR)
     {
