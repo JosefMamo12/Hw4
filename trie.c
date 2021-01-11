@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "trie.h"
 
 struct triNode *getTrieNode()
@@ -46,7 +47,7 @@ int isEmpty(const list *lst)
 }
 lnode *create_lnode(char c, lnode *next)
 {
-    lnode *newNode = (lnode *)calloc(1, sizeof(lnode));
+    lnode *newNode = (lnode *)malloc(sizeof(lnode));
     if (newNode != NULL)
     {
         newNode->data = c;
@@ -55,7 +56,7 @@ lnode *create_lnode(char c, lnode *next)
     }
     else
     {
-        printf("The calloc didnt succeed");
+        printf("The m\\\\alloc didnt succeed");
     }
     return NULL;
 }
@@ -107,10 +108,9 @@ void freeList(list *lst)
 void printTrieLexUp(triNode *root, int maxWordLength)
 {
     int d = 0;
-    char *str;
-    str = (char *)malloc(sizeof(maxWordLength + 1));
-    if (str != NULL)
-    {
+    char *str = (char *)malloc((maxWordLength)+1);
+
+    if (str != NULL){
         preorder(root, str, d);
         free(str);
     }
@@ -123,7 +123,7 @@ void printTrieLexDown(triNode *root, int maxWordLength)
 {
     int d = 0;
     char *str;
-    str = (char *)malloc(sizeof(maxWordLength + 1));
+    str = (char *)malloc((maxWordLength) + 1);
     if (str != NULL)
     {
         postorder(root, str, d);
@@ -141,7 +141,7 @@ void preorder(struct triNode *follow, char str[], int d)
     {
         return;
     }
-    /* Print the word at the beginning instead of the end */
+
     if (follow->endOfWord)
     {
 
@@ -152,10 +152,6 @@ void preorder(struct triNode *follow, char str[], int d)
 
     for (i = 0; i < 26; i++)
     {
-        /* preorder returns immediately if its argument is NULL, so
-     * there's no need to check twice. Perhaps even better would be
-     * to do the check here, and not do it at the beginning.
-     */
         str[d] = 'a' + i;
         preorder(follow->children[i], str, d + 1);
     }
@@ -199,4 +195,3 @@ void freeTrie(triNode *root)
             i++;
     }
 }
-

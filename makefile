@@ -16,4 +16,4 @@ trie.o: trie.c trie.h
 	clean all frequency
 
 clean:
-	rm -rf *o frequency 
+	rm -rf *o frequency Hw4
