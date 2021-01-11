@@ -1,6 +1,7 @@
 #ifndef TRIE_H
 #define TRIE_H
 #define NUM_LETTERS ((int)26)
+#define A 'a'
 
 typedef struct triNode
 {

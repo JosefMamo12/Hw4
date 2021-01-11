@@ -20,9 +20,9 @@ void insert(triNode *root, char *str)
     triNode *curr = root;
     while (*str)
     {
-        if (curr->children[*str - 'a'] == NULL)
-            curr->children[*str - 'a'] = getTrieNode();
-        curr = curr->children[*str - 'a'];
+        if (curr->children[*str - A] == NULL)
+            curr->children[*str - A] = getTrieNode();
+        curr = curr->children[*str - A];
         str++;
     }
     if (curr->endOfWord == 0)
@@ -108,9 +108,10 @@ void freeList(list *lst)
 void printTrieLexUp(triNode *root, int maxWordLength)
 {
     int d = 0;
-    char *str = (char *)malloc((maxWordLength)+1);
+    char *str = (char *)malloc((maxWordLength) + 1);
 
-    if (str != NULL){
+    if (str != NULL)
+    {
         preorder(root, str, d);
         free(str);
     }
@@ -152,7 +153,7 @@ void preorder(struct triNode *follow, char str[], int d)
 
     for (i = 0; i < 26; i++)
     {
-        str[d] = 'a' + i;
+        str[d] = A + i;
         preorder(follow->children[i], str, d + 1);
     }
 }
@@ -169,7 +170,7 @@ void postorder(struct triNode *follow, char str[], int d)
 
     for (i = NUM_LETTERS - 1; i >= 0; i--)
     {
-        str[d] = 'a' + i;
+        str[d] = A + i;
         postorder(follow->children[i], str, d + 1);
     }
     if (follow->endOfWord)

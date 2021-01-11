@@ -13,7 +13,7 @@ trie.o: trie.c trie.h
 	$(CC) $(FLAGS) -c trie.c
 
  .PHONY:
-	clean all frequency
+	clean all 
 
 clean:
 	rm -rf *o frequency Hw4
